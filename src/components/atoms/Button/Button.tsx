@@ -1,11 +1,11 @@
-import React from "react";
-import { Button as AntButton } from "antd";
-import styled from "styled-components";
+import { ReactNode } from "react";
+import { StyledButton } from './StyledButton';
 
-const StyledButton = styled(AntButton)`
-  margin-left: 10px;
-`;
+type Props = {
+  children: ReactNode;
+  onClick: () => void;
+};
 
-export const Button: React.FC<{ onClick: () => void }> = ({ children, onClick }) => (
+export const Button = ({ children, onClick }: Props): JSX.Element => (
   <StyledButton onClick={onClick}>{children}</StyledButton>
 );

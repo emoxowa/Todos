@@ -1,16 +1,13 @@
 import { Button, Checkbox } from 'components/atoms';
-import React from "react";
-import styled from "styled-components";
+import { ItemText } from './StyledTodoItem';
 
-const ItemText = styled.span<{ completed: boolean }>`
-  text-decoration: ${(props) => (props.completed ? "line-through" : "none")};
-`;
-
-export const TodoItem: React.FC<{
+type Props = {
   todo: { text: string; completed: boolean };
   onToggle: () => void;
   onDelete: () => void;
-}> = ({ todo, onToggle, onDelete }) => (
+};
+
+export const TodoItem = ({ todo, onToggle, onDelete }: Props): JSX.Element => (
   <li>
     <Checkbox checked={todo.completed} onChange={onToggle} />
     <ItemText completed={todo.completed}>{todo.text}</ItemText>

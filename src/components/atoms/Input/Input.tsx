@@ -1,16 +1,13 @@
 import React from "react";
-import { Input as AntInput } from "antd";
-import styled from "styled-components";
+import { StyledInput } from './StyledInput';
 
-const StyledInput = styled(AntInput)`
-  margin-bottom: 20px;
-`;
-
-export const Input: React.FC<{
+type Props = {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onEnter: () => void;
-}> = ({ value, onChange, onEnter }) => (
+};
+
+export const Input = ({ value, onChange, onEnter }: Props): JSX.Element => (
   <StyledInput
     placeholder="What needs to be done?"
     value={value}

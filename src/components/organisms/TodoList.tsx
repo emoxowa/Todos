@@ -1,12 +1,14 @@
 
 import { TodoItem } from 'components/molecules';
-import React from "react";
 
-export const TodoList: React.FC<{
+type Props = {
   todos: { text: string; completed: boolean }[];
   onToggleTodo: (index: number) => void;
   onDeleteTodo: (index: number) => void;
-}> = ({ todos, onToggleTodo, onDeleteTodo }) => (
+};
+
+
+export const TodoList= ({ todos, onToggleTodo, onDeleteTodo }: Props): JSX.Element => (
   <ul>
     {todos.map((todo, index) => (
       <TodoItem
