@@ -2,9 +2,10 @@ import { Checkbox } from "components/atoms";
 import { ItemText, StyledItem } from "./StyledTodoItem";
 import { Button } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
+import { Todo } from 'hooks';
 
 type Props = {
-  todo: { text: string; completed: boolean };
+  todo: Todo;
   onToggle: () => void;
   onDelete: () => void;
 };

@@ -1,14 +1,15 @@
-import { useState } from "react";
 import {
   FooterContainer,
   StyledSegmented,
   TaskCount,
 } from "./StyledTodoFooter";
-import { Button, Modal } from "antd";
+import { Button, Flex, Modal } from "antd";
+import { FilterType, useModal } from "hooks";
+import { getItemText } from "utils";
 
 type Props = {
-  activeFilter: "All" | "Active" | "Completed";
-  setActiveFilter: (filter: "All" | "Active" | "Completed") => void;
+  activeFilter: FilterType;
+  setActiveFilter: (filter: FilterType) => void;
   clearCompleted: () => void;
   remainingCount: number;
 };
@@ -19,25 +20,8 @@ export const TodoFooter = ({
   clearCompleted,
   remainingCount,
 }: Props): JSX.Element => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    clearCompleted();
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
-
-  const getItemText = (count: number) => {
-    if (count === 0) return "No items left";
-    return `${count} ${count === 1 ? "item" : "items"} left`;
-  };
+  const { isModalOpen, showModal, handleOk, handleCancel } =
+    useModal(clearCompleted);
 
   return (
     <>
@@ -47,9 +31,7 @@ export const TodoFooter = ({
         <StyledSegmented
           options={["All", "Active", "Completed"]}
           value={activeFilter}
-          onChange={(value) =>
-            setActiveFilter(value as "All" | "Active" | "Completed")
-          }
+          onChange={(value) => setActiveFilter(value as FilterType)}
         />
 
         <Button type="primary" onClick={showModal}>
@@ -65,19 +47,13 @@ export const TodoFooter = ({
         cancelText="No, cancel"
         centered
       >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
+        <Flex vertical align="center">
           <p>Are you sure you want to clear all completed tasks?</p>
           <img
             src="https://media.tenor.com/vMVIvalg1HEAAAAi/cat-meme.gif"
             width={100}
           />
-        </div>
+        </Flex>
       </Modal>
     </>
   );
