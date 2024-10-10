@@ -1,8 +1,13 @@
 import styled from "styled-components";
 
 export const PageContainer = styled.div`
-  max-width: 700px;
-  margin: 50px auto;
-  padding: 20px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 150px;
+  min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(37deg, #36717b 10%, #070f20 90%);
+  color: #fff;
+  box-sizing: border-box;
 `;

@@ -1,5 +1,7 @@
-import { Button, Checkbox } from 'components/atoms';
-import { ItemText } from './StyledTodoItem';
+import { Checkbox } from "components/atoms";
+import { ItemText, StyledItem } from "./StyledTodoItem";
+import { Button } from "antd";
+import { DeleteOutlined } from "@ant-design/icons";
 
 type Props = {
   todo: { text: string; completed: boolean };
@@ -8,9 +10,17 @@ type Props = {
 };
 
 export const TodoItem = ({ todo, onToggle, onDelete }: Props): JSX.Element => (
-  <li>
-    <Checkbox checked={todo.completed} onChange={onToggle} />
-    <ItemText completed={todo.completed}>{todo.text}</ItemText>
-    <Button onClick={onDelete}>X</Button>
-  </li>
+  <StyledItem>
+    <div>
+      <Checkbox checked={todo.completed} onChange={onToggle} />
+      <ItemText completed={todo.completed}>{todo.text}</ItemText>
+    </div>
+    <Button
+      type="primary"
+      shape="circle"
+      onClick={onDelete}
+      size="small"
+      icon={<DeleteOutlined />}
+    />
+  </StyledItem>
 );

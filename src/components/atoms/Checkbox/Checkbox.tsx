@@ -1,7 +1,8 @@
-import { Checkbox as AntCheckbox } from "antd";
+import { StyledCheckbox } from './StyledCheckbox';
+
 
 type Props = { checked: boolean; onChange: () => void };
 
 export const Checkbox = ({ checked, onChange }: Props): JSX.Element => (
-  <AntCheckbox checked={checked} onChange={onChange} />
+  <StyledCheckbox checked={checked} onChange={onChange} />
 );
