@@ -1,7 +1,9 @@
 import { List } from "antd";
 import styled from "styled-components";
 
-export const ItemText = styled.span<{ completed: boolean }>`
+export const ItemText = styled.span.withConfig({
+  shouldForwardProp: (prop) => prop !== "completed",
+})<{ completed: boolean }>`
   text-decoration: ${(props) => (props.completed ? "line-through" : "none")};
   color: ${(props) => (props.completed ? "#a3a4a8" : "white")};
   text-align: start;

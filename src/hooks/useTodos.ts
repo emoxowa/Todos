@@ -1,14 +1,17 @@
+import { useLocalStorage } from 'hooks';
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 export type Todo = { id: string; text: string; completed: boolean };
 
 export const useTodos = () => {
-  const [todos, setTodos] = useState<Todo[]>([
+  const initialTodos = [
     { id: uuidv4(), text: "Покормить кота", completed: false },
     { id: uuidv4(), text: "Помыть лоток", completed: false },
     { id: uuidv4(), text: "Сделать тестовое задание", completed: true },
-  ]);
+  ];
+
+  const [todos, setTodos] = useLocalStorage<Todo[]>("todos", initialTodos);
 
   const [newTodo, setNewTodo] = useState("");
   const [showCat, setShowCat] = useState(false);
@@ -27,7 +30,8 @@ export const useTodos = () => {
     setTodos(updatedTodos);
 
     const toggledTodo = updatedTodos.find((todo) => todo.id === id);
-    if (toggledTodo && !toggledTodo.completed) {
+
+    if (toggledTodo && toggledTodo.completed) {
       setShowCat(true);
       setTimeout(() => {
         setShowCat(false);

@@ -59,7 +59,7 @@ export const Container = styled.div`
 
   @media (min-width: ${Breakpoints.MD}px) {
     width: 600px;
-    padding: 20px;
+    padding: 20px 60px;
   }
 `;
 

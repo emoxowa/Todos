@@ -26,7 +26,7 @@ export const CatImage1 = styled.img`
 export const CatImage2 = styled.img`
   position: absolute;
   top: -25px;
-  left: -200px;
+  left: -185px;
   width: 80px;
   height: 80px;
 
