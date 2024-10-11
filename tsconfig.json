@@ -1,7 +1,22 @@
 {
   "files": [],
+  "exclude": ["node_modules", "dist"],
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
-  ]
+  ],
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./src",
+    "paths": {
+      "components/*": ["components/*"],
+      "assets/*": ["assets/*"],
+      "utils/*": ["utils/*"],
+      "hooks/*": ["hooks/*"],
+      "constants/*": ["constants/*"],
+      "src/*": ["src/*"]
+    },
+    "jsx": "react-jsx",
+  }
 }

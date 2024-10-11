@@ -4,8 +4,8 @@ import {
   TaskCount,
 } from "./StyledTodoFooter";
 import { Button, Flex, Modal } from "antd";
-import { FilterType, useModal } from "hooks";
-import { getItemText } from "utils";
+import { FilterType, useModal } from "../../../hooks";
+import { getItemText } from "../../../utils";
 
 type Props = {
   activeFilter: FilterType;

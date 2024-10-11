@@ -1,7 +1,7 @@
 import { TodoItem } from "components/molecules";
 import { StyledEmpty, StyledList } from "./StyledTodoList";
-import { getEmptyDescription } from 'utils';
-import { FilterType, Todo } from 'hooks';
+import { getEmptyDescription } from '../../utils';
+import { FilterType, Todo } from '../../hooks';
 
 type Props = {
   todos: Todo[];
