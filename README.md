@@ -1,50 +1,47 @@
-# React + TypeScript + Vite
+# Todos App 📝
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
 
-Currently, two official plugins are available:
+**Todos** is a modern task management application built using **React**, **TypeScript**, and **Ant Design**. It features a minimalist yet functional interface for adding, deleting, and filtering tasks.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The app supports saving tasks in **localStorage**, which ensures that your data remains persistent even after the page is refreshed.
 
-## Expanding the ESLint configuration
+### Killer Feature 🐱🎶
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+The standout feature of this application is the built-in **audio player with dancing cats**. When you interact with the audio player (play or pause), fun cat animations appear on the screen, adding some entertainment while you manage your tasks!
 
-- Configure the top-level `parserOptions` property like this:
+## Key Features
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- 📝 **Add Tasks**: Allows users to add new tasks through an intuitive input field.
+- ✅ **Toggle Task Completion**: Mark tasks as completed or uncompleted with a simple click.
+- ❌ **Delete Tasks**: Remove tasks by clicking the delete button.
+- 🔄 **Task Filtering**: Filter tasks by the following categories:
+  - All (all tasks)
+  - Active (active tasks)
+  - Completed (completed tasks)
+- 🎵 **Audio Player with Dancing Cats**: A music player that displays dancing cat animations when playing.
+- 💾 **Persistent Tasks (localStorage)**: Your tasks are saved locally and restored when you revisit the page.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Installation and Setup
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### 1. Install Dependencies
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+npm install
+
+### 2. Run the App in Development Mode
+
+npm run start
+
+### 3. Run Tests
+
+npm run test
+
+## Tech Stack
+
+The project is built using the following technologies:
+
+- **React**: A library for building user interfaces.
+- **TypeScript**: Used for static type checking to ensure code quality.
+- **Ant Design**: A UI component library to make the app look stylish and provide ready-made components.
+- **Styled-components**: A library for styling the components using tagged template literals.
+- **Jest & React Testing Library**: Used for unit and integration testing to ensure the application behaves as expected.
