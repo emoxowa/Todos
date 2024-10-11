@@ -1,12 +1,13 @@
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
-export type Todo = { text: string; completed: boolean };
+export type Todo = { id: string; text: string; completed: boolean };
 
 export const useTodos = () => {
   const [todos, setTodos] = useState<Todo[]>([
-    { text: "Покормить кота", completed: false },
-    { text: "Помыть лоток", completed: false },
-    { text: "Сделать тестовое задание", completed: true },
+    { id: uuidv4(), text: "Покормить кота", completed: false },
+    { id: uuidv4(), text: "Помыть лоток", completed: false },
+    { id: uuidv4(), text: "Сделать тестовое задание", completed: true },
   ]);
 
   const [newTodo, setNewTodo] = useState("");
@@ -14,18 +15,19 @@ export const useTodos = () => {
 
   const addTodo = () => {
     if (newTodo.trim()) {
-      setTodos([...todos, { text: newTodo, completed: false }]);
+      setTodos([...todos, { id: uuidv4(), text: newTodo, completed: false }]);
       setNewTodo("");
     }
   };
 
-  const toggleTodo = (index: number) => {
-    const updatedTodos = todos.map((todo, i) =>
-      i === index ? { ...todo, completed: !todo.completed } : todo
+  const toggleTodo = (id: string) => {
+    const updatedTodos = todos.map((todo) =>
+      todo.id === id ? { ...todo, completed: !todo.completed } : todo
     );
     setTodos(updatedTodos);
 
-    if (!todos[index].completed) {
+    const toggledTodo = updatedTodos.find((todo) => todo.id === id);
+    if (toggledTodo && !toggledTodo.completed) {
       setShowCat(true);
       setTimeout(() => {
         setShowCat(false);
@@ -33,8 +35,8 @@ export const useTodos = () => {
     }
   };
 
-  const deleteTodo = (index: number) => {
-    setTodos(todos.filter((_, i) => i !== index));
+  const deleteTodo = (id: string) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
   };
 
   const clearCompleted = () => {

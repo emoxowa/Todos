@@ -1,4 +1,5 @@
 import { Empty, List } from "antd";
+import { Todo } from 'hooks';
 import styled from "styled-components";
 
 export const StyledEmpty = styled(Empty)`
@@ -11,7 +12,7 @@ export const StyledEmpty = styled(Empty)`
   }
 `;
 
-export const StyledList = styled(List)`
+export const StyledList = styled(List<Todo>)`
   min-height: 200px;
   width: 100%;
 `;

@@ -4,9 +4,9 @@ import { getEmptyDescription } from 'utils';
 import { FilterType, Todo } from 'hooks';
 
 type Props = {
-  todos:  Todo[];
-  onToggleTodo: (index: number) => void;
-  onDeleteTodo: (index: number) => void;
+  todos: Todo[];
+  onToggleTodo: (id: string) => void;
+  onDeleteTodo: (id: string) => void;
   activeFilter: FilterType;
 };
 
@@ -22,12 +22,12 @@ export const TodoList = ({
       {todos.length > 0 ? (
         <StyledList
           dataSource={todos}
-          renderItem={(item, index) => (
+          renderItem={(item) => (
             <TodoItem
-              key={index}
+              key={item.id}
               todo={item as Todo}
-              onToggle={() => onToggleTodo(index)}
-              onDelete={() => onDeleteTodo(index)}
+              onToggle={() => onToggleTodo(item.id)}
+              onDelete={() => onDeleteTodo(item.id)}
             />
           )}
         ></StyledList>

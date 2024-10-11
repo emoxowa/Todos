@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const ItemText = styled.span<{ completed: boolean }>`
   text-decoration: ${(props) => (props.completed ? "line-through" : "none")};
-  color: white;
+  color: ${(props) => (props.completed ? "#a3a4a8" : "white")};
   text-align: start;
   overflow: hidden;
   text-overflow: ellipsis;
