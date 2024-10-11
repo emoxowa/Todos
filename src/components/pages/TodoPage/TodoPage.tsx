@@ -1,11 +1,11 @@
 import { TaskInputForm, TodoFooter } from "components/molecules";
 import { MainTemplate } from "components/templates/MainTemplate";
 import { TodoList } from "components/organisms";
-import { CatImage, Container } from "./StyledTodoPage";
-import { Flex, Progress } from "antd";
+import { CatImage, Container, StyledProgress, StyledTitle } from "./StyledTodoPage";
+import { Flex } from "antd";
 import { AudioPlayer } from "components/molecules/AudioPlayer/AudioPlayer";
 import { useFilter, useTodos } from "hooks";
-import { useProgress } from 'hooks/useProgress';
+import { useProgress } from "hooks/useProgress";
 
 export const TodoPage = (): JSX.Element => {
   const {
@@ -18,7 +18,7 @@ export const TodoPage = (): JSX.Element => {
     clearCompleted,
     showCat,
   } = useTodos();
-  
+
   const { filteredTodos, filter, setFilter } = useFilter(todos);
 
   const { progressPercent } = useProgress(todos);
@@ -26,8 +26,8 @@ export const TodoPage = (): JSX.Element => {
   return (
     <MainTemplate>
       <Container>
-        <Flex gap={20} align="center">
-          <h1>Todos</h1>
+        <Flex gap={20} align="center" style={{ marginBottom: "20px" }}>
+          <StyledTitle>Todos</StyledTitle>
           <AudioPlayer />
         </Flex>
 
@@ -39,10 +39,7 @@ export const TodoPage = (): JSX.Element => {
           onAddTask={addTodo}
         />
 
-        <Progress
-          percent={Math.round(progressPercent)}
-          style={{ width: "500px", margin: "10px 0" }}
-        />
+        <StyledProgress percent={Math.round(progressPercent)} />
 
         <TodoList
           todos={filteredTodos}

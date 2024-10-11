@@ -1,11 +1,16 @@
+import { Progress, Typography } from "antd";
+import { Breakpoints } from "constants/breakpoints";
 import styled, { keyframes } from "styled-components";
+
+const { Title } = Typography;
 
 export const Container = styled.div`
   position: relative;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border-radius: 10px;
-  padding: 20px;
+  width: 100%;
+  padding: 10px;
   margin: 10px 0;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   color: white;
@@ -13,8 +18,8 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 600px;
   z-index: 1;
+  box-sizing: border-box;
 
   &::before {
     content: "";
@@ -51,6 +56,11 @@ export const Container = styled.div`
       background-position: 100% 50%;
     }
   }
+
+  @media (min-width: ${Breakpoints.MD}px) {
+    width: 600px;
+    padding: 20px;
+  }
 `;
 
 const fadeInOut = keyframes`
@@ -69,4 +79,12 @@ export const CatImage = styled.img`
   animation: ${fadeInOut} 2s ease-in-out;
 `;
 
+export const StyledProgress = styled(Progress)`
+  margin: 10px 0;
+  width: 100%;
+`;
 
+export const StyledTitle = styled(Title)`
+  color: white !important;
+  text-align: center;
+`;
